@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "9I04ON1RAof+03aRl3EAJfHVSW7tgcSUM+/zx+yJfy4AiTw5Id9lgPnWPCUzvC1MJ16Tnif45R+9806RyU8VoQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gusta\\source\\repos\\Worker.Leitor.Notfis\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gusta\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "d/tlKs5H7weNABdW0ZLsU3HWfEt8rfcrGsy1WyZCtoWLtExlRh0i+4+pDg2I3ZiwuZIjX/Nu05My97NnWPftkA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gusta\\source\\repos\\Worker.Leitor.Notfis\\Services\\Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gusta\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.1\\microsoft.extensions.logging.abstractions.6.0.1.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

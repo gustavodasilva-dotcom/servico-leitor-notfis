@@ -1,0 +1,12 @@
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\bin\Debug\net5.0\Infra.CrossCutting.deps.json
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\bin\Debug\net5.0\Infra.CrossCutting.dll
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\bin\Debug\net5.0\ref\Infra.CrossCutting.dll
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\bin\Debug\net5.0\Infra.CrossCutting.pdb
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.csproj.AssemblyReference.cache
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.AssemblyInfo.cs
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.dll
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\ref\Infra.CrossCutting.dll
+C:\Users\gusta\source\repos\Worker.Leitor.Notfis\Infra.CrossCutting\obj\Debug\net5.0\Infra.CrossCutting.pdb
