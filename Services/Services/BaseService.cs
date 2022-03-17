@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Services.Interfaces;
 
 namespace Services.Services
@@ -7,16 +8,27 @@ namespace Services.Services
     {
         private readonly IArquivoService _arquivoService;
 
-        public BaseService(IArquivoService arquivoService)
+        private readonly IClienteService _clienteService;
+
+        public BaseService(IArquivoService arquivoService, IClienteService clienteService)
         {
             _arquivoService = arquivoService;
+
+            _clienteService = clienteService;
         }
 
-        public void ExecutarServico()
+        public async Task ExecutarServicoAsync()
         {
             try
             {
-                _arquivoService.VerificarArquivos();
+                var caminhosClientes = await _clienteService.ObterCaminhosAsync();
+
+                foreach (var caminhoCliente in caminhosClientes)
+                {
+                    var extensao = await _clienteService.ObterClientesExtensoesAsync(caminhoCliente.Cliente_LayoutID);
+
+                    _arquivoService.VerificarArquivos(caminhoCliente, extensao);
+                }
             }
             catch (Exception) { throw; }
         }

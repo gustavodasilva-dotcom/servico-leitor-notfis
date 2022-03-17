@@ -1,7 +1,9 @@
-﻿namespace Services.Interfaces
+﻿using Domain.Entities;
+
+namespace Services.Interfaces
 {
     public interface IArquivoService
     {
-        void VerificarArquivos();
+        void VerificarArquivos(PastasClientes pastaCliente, Extensoes extensao);
     }
 }

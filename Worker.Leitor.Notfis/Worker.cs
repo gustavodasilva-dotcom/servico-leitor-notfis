@@ -28,7 +28,7 @@ namespace Worker.Leitor.Notfis
 
                 try
                 {
-                    _baseService.ExecutarServico();
+                    await _baseService.ExecutarServicoAsync();
                 }
                 catch (Exception e)
                 {
