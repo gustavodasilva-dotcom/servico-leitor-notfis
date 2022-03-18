@@ -2,9 +2,11 @@
 {
     public class Remetente
     {
-        public string RazaoSocial { get; set; }
+        public string Identificacao { get; set; }
 
-        public string Cnpj { get; set; }
+        public string InscricaoEstadual { get; set; }
+
+        public string RazaoSocial { get; set; }
 
         public Endereco Endereco { get; set; }
     }

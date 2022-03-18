@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Services.Interfaces;
 
@@ -23,11 +24,20 @@ namespace Services.Services
             {
                 var caminhosClientes = await _clienteService.ObterCaminhosAsync();
 
-                foreach (var caminhoCliente in caminhosClientes)
+                if (caminhosClientes.Any())
                 {
-                    var extensao = await _clienteService.ObterClientesExtensoesAsync(caminhoCliente.Cliente_LayoutID);
+                    foreach (var caminhoCliente in caminhosClientes)
+                    {
+                        var extensao = await _clienteService.ObterClientesExtensoesAsync(caminhoCliente.Cliente_LayoutID);
 
-                    _arquivoService.VerificarArquivos(caminhoCliente, extensao);
+                        if (extensao != null)
+                        {
+                            var tags = await _clienteService.ObterTagsClienteAsync(caminhoCliente.Cliente_LayoutID);
+
+                            if (tags != null)
+                                _arquivoService.VerificarArquivos(caminhoCliente, extensao, tags.ToList());
+                        }
+                    }
                 }
             }
             catch (Exception) { throw; }
