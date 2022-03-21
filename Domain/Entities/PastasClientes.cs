@@ -6,7 +6,7 @@ namespace Domain.Entities
     {
         public int ID { get; set; }
 
-        public int Cliente_LayoutID { get; set; }
+        public int ClienteID { get; set; }
 
         public string CaminhoNovosArquivos { get; set; }
 

@@ -8,8 +8,6 @@ namespace Domain.Interfaces
     {
         Task<IEnumerable<PastasClientes>> ObterCaminhosAsync();
 
-        Task<Extensoes> ObterClientesExtensoesAsync(int cliente_layoutID);
-
-        Task<IEnumerable<Clientes_Layouts_Tag>> ObterTagsClienteAsync(int cliente_layoutID);
+        Task<IEnumerable<Clientes_Tags>> ObterTagsClienteAsync(int clienteID);
     }
 }

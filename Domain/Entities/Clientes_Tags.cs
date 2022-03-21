@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Clientes_Layouts_Tag
+    public class Clientes_Tags
     {
         public int ID { get; set; }
 
@@ -10,15 +10,11 @@ namespace Domain.Entities
 
         public bool Obrigatoria { get; set; }
 
-        public int InicioIndice { get; set; }
+        public int IndiceInicial { get; set; }
 
         public int Tamanho { get; set; }
 
-        public string Attribute { get; set; }
-
-        public int Indice { get; set; }
-
-        public int Cliente_LayoutID { get; set; }
+        public int ClienteID { get; set; }
 
         public bool Ativo { get; set; }
 

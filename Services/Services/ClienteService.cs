@@ -20,14 +20,9 @@ namespace Services.Services
             return await _clienteRepository.ObterCaminhosAsync();
         }
 
-        public async Task<Extensoes> ObterClientesExtensoesAsync(int cliente_layoutID)
+        public async Task<IEnumerable<Clientes_Tags>> ObterTagsClienteAsync(int clienteID)
         {
-            return await _clienteRepository.ObterClientesExtensoesAsync(cliente_layoutID);
-        }
-
-        public async Task<IEnumerable<Clientes_Layouts_Tag>> ObterTagsClienteAsync(int cliente_layoutID)
-        {
-            return await _clienteRepository.ObterTagsClienteAsync(cliente_layoutID);
+            return await _clienteRepository.ObterTagsClienteAsync(clienteID);
         }
     }
 }
