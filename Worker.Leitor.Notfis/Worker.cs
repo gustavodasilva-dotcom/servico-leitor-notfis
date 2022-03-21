@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Services.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
 
 namespace Worker.Leitor.Notfis
 {
@@ -13,11 +14,15 @@ namespace Worker.Leitor.Notfis
 
         private readonly IBaseService _baseService;
 
-        public Worker(ILogger<Worker> logger, IBaseService baseService)
+        private readonly IConfiguration _configuration; 
+
+        public Worker(ILogger<Worker> logger, IBaseService baseService, IConfiguration configuration)
         {
             _logger = logger;
 
             _baseService = baseService;
+
+            _configuration = configuration;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -28,7 +33,7 @@ namespace Worker.Leitor.Notfis
 
                 try
                 {
-                    _baseService.ExecutarServico();
+                    await _baseService.ExecutarServicoAsync();
                 }
                 catch (Exception e)
                 {
@@ -39,7 +44,7 @@ namespace Worker.Leitor.Notfis
                     _logger.LogInformation($"{DateTimeOffset.Now} - Processo executado.");
                     _logger.LogInformation($"{DateTimeOffset.Now} - Aguardando próxima execucação.");
 
-                    await Task.Delay(1000, stoppingToken);
+                    await Task.Delay(int.Parse(_configuration["Leitor:Configuracoes:Delay"]), stoppingToken);
                 }
             }
         }

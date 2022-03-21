@@ -1,5 +1,8 @@
+using Domain.Interfaces;
 using Services.Services;
 using Services.Interfaces;
+using Infra.Data.Config;
+using Infra.Data.Repository;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +21,10 @@ namespace Worker.Leitor.Notfis
                 {
                     services.AddSingleton<IBaseService, BaseService>();
                     services.AddSingleton<IArquivoService, ArquivoService>();
+                    services.AddSingleton<IClienteService, ClienteService>();
+
+                    services.AddSingleton<IConnection, Connection>();
+                    services.AddSingleton<IClienteRepository, ClienteRepository>();
 
                     services.AddHostedService<Worker>();
                 });
