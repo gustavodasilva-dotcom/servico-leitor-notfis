@@ -24,5 +24,10 @@ namespace Services.Services
         {
             return await _clienteRepository.ObterTagsClienteAsync(clienteID);
         }
+
+        public async Task<IEnumerable<InformacoesLinhas>> ObterInformacoesLinhasAsync(int clienteID)
+        {
+            return await _clienteRepository.ObterInformacoesLinhasAsync(clienteID);
+        }
     }
 }

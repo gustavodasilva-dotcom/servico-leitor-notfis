@@ -5,6 +5,6 @@ namespace Services.Interfaces
 {
     public interface IArquivoService
     {
-        void VerificarArquivos(PastasClientes pastaCliente, List<Clientes_Tags> tags);
+        void VerificarArquivos(PastasClientes pastaCliente, List<Clientes_Tags> tags, List<InformacoesLinhas> informacoesLinhas);
     }
 }

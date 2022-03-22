@@ -6,20 +6,131 @@ USE DB_Leitor_Arquivos;
 GO
 
 
+-- Criada
+DROP TABLE IF EXISTS Layouts
+CREATE TABLE Layouts
+(
+	 ID				INT				NOT NULL IDENTITY(1, 1)
+	,Descricao		VARCHAR(50)
+	,Ativo			BIT				DEFAULT 1
+	,Excluido		BIT				DEFAULT 0
+	,Data			DATETIME		DEFAULT GETDATE()
+
+	CONSTRAINT PK_LayoutID PRIMARY KEY(ID)
+);
+
+INSERT INTO Layouts
+(
+	Descricao
+)
+VALUES
+ ('Proceda 3.1')
+,('Proceda 5.0');
+
+
+--Criada
+DROP TABLE IF EXISTS Linhas
+CREATE TABLE Linhas
+(
+	 ID				INT				NOT NULL IDENTITY(1, 1)
+	,Linha			VARCHAR(10)
+	,LayoutID		INT
+	,Ativo			BIT				DEFAULT 1
+	,Excluido		BIT				DEFAULT 0
+	,Data			DATETIME		DEFAULT GETDATE()
+
+	CONSTRAINT PK_LinhaID PRIMARY KEY(ID)
+
+	CONSTRAINT FK_Linhas_LayoutID FOREIGN KEY(LayoutID)
+	REFERENCES Layouts(ID)
+);
+
+INSERT INTO Linhas
+(
+	 Linha
+	,LayoutID
+)
+VALUES
+ ('311', 1)
+,('312', 1)
+,('307', 1)
+,('313', 1)
+,('314', 1)
+,('315', 1);
+
+
+-- Criada
+DROP TABLE IF EXISTS InformacoesLinhas
+CREATE TABLE InformacoesLinhas
+(
+	 ID				INT				NOT NULL IDENTITY(1, 1)
+	,Descricao		VARCHAR(50)
+	,Ativo			BIT				DEFAULT 1
+	,Excluido		BIT				DEFAULT 0
+	,Data			DATETIME		DEFAULT GETDATE()
+
+	CONSTRAINT PK_InformacaoLinhaID PRIMARY KEY(ID)
+);
+
+INSERT INTO InformacoesLinhas
+(
+	Descricao
+)
+VALUES
+ ('Remetente')
+,('Destinatario')
+,('InformacoesOrdem1')
+,('InformacoesOrdem2')
+,('Items')
+,('Quebra');
+
+
+--Criada
+DROP TABLE IF EXISTS Linhas_InformacoesLinhas
+CREATE TABLE Linhas_InformacoesLinhas
+(
+	 ID					INT				NOT NULL IDENTITY(1, 1)
+	,LinhaID			INT
+	,InformacaoLinhaID	INT
+	,Ativo				BIT				DEFAULT 1
+	,Excluido			BIT				DEFAULT 0
+	,Data				DATETIME		DEFAULT GETDATE()
+
+	CONSTRAINT PK_Linha_InformacaoLinhaID PRIMARY KEY(ID)
+
+	CONSTRAINT FK_Linhas_InformacaoLinha_LinhaID FOREIGN KEY(LinhaID)
+	REFERENCES Linhas(ID),
+
+	CONSTRAINT FK_Linhas_InformacaoLinha_InformacaoLinhaID FOREIGN KEY(InformacaoLinhaID)
+	REFERENCES InformacoesLinhas(ID)
+);
+
+INSERT INTO Linhas_InformacoesLinhas (LinhaID, InformacaoLinhaID) VALUES (1, 1);
+INSERT INTO Linhas_InformacoesLinhas (LinhaID, InformacaoLinhaID) VALUES (2, 2);
+INSERT INTO Linhas_InformacoesLinhas (LinhaID, InformacaoLinhaID) VALUES (3, 3);
+INSERT INTO Linhas_InformacoesLinhas (LinhaID, InformacaoLinhaID) VALUES (4, 4);
+INSERT INTO Linhas_InformacoesLinhas (LinhaID, InformacaoLinhaID) VALUES (5, 5);
+INSERT INTO Linhas_InformacoesLinhas (LinhaID, InformacaoLinhaID) VALUES (6, 6);
+
+
 --Criada
 DROP TABLE IF EXISTS Clientes
 CREATE TABLE Clientes
 (
 	 ID				INT				NOT NULL IDENTITY(1, 1)
 	,Nome			VARCHAR(200)
+	,LayoutID		INT
 	,Ativo			BIT				DEFAULT 1
 	,Excluido		BIT				DEFAULT 0
 	,Data			DATETIME		DEFAULT GETDATE()
 
 	CONSTRAINT PK_ClienteID PRIMARY KEY(ID)
+
+	CONSTRAINT FK_Clientes_LayoutID FOREIGN KEY(LayoutID)
+	REFERENCES Layouts(ID)
 );
 
-INSERT INTO Clientes (Nome) VALUES ('Cliente fictício NOTFIS');
+INSERT INTO Clientes (Nome, LayoutID) VALUES ('Cliente fictício NOTFIS', 1);
 
 
 -- Criada
@@ -159,3 +270,19 @@ VALUES
 ,(23, 1, 258, 44, 1)
 ,(24, 1, 3, 7, 1)
 ,(25, 1, 25, 37, 1);
+
+
+
+-- SELECT para selecionar o layout de um cliente:
+SELECT IL.Descricao,
+       LN.*
+FROM   Clientes C (nolock)
+       INNER JOIN Layouts L (nolock)
+               ON C.LayoutID = L.ID
+       INNER JOIN Linhas LN (nolock)
+               ON LN.LayoutID = L.ID
+       INNER JOIN Linhas_InformacoesLinhas LI (nolock)
+               ON LI.LinhaID = LN.ID
+       INNER JOIN InformacoesLinhas IL (nolock)
+               ON LI.InformacaoLinhaID = IL.ID
+WHERE  C.ID = 1;
