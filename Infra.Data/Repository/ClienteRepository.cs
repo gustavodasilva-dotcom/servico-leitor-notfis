@@ -59,5 +59,33 @@ namespace Infra.Data.Repository
             }
             catch (Exception) { throw; }
         }
+
+        public async Task<IEnumerable<InformacoesLinhas>> ObterInformacoesLinhasAsync(int clienteID)
+        {
+            var query = new StringBuilder();
+
+            #region SQL
+
+            query.Append(@"SELECT IL.Descricao,");
+            query.Append(@" LN.*");
+            query.Append(@" FROM Clientes C (NOLOCK)");
+            query.Append(@" INNER JOIN Layouts L (NOLOCK)");
+            query.Append(@" ON C.LayoutID = L.ID");
+            query.Append(@" INNER JOIN Linhas LN (NOLOCK)");
+            query.Append(@" ON LN.LayoutID = L.ID");
+            query.Append(@" INNER JOIN Linhas_InformacoesLinhas LI (NOLOCK)");
+            query.Append(@" ON LI.LinhaID = LN.ID");
+            query.Append(@" INNER JOIN InformacoesLinhas IL (NOLOCK)");
+            query.Append(@" ON LI.InformacaoLinhaID = IL.ID");
+            query.Append($@" WHERE C.ID = {clienteID};");
+
+            #endregion
+
+            try
+            {
+                return await _connection.ExecutarSelectListaAsync<InformacoesLinhas>(query.ToString());
+            }
+            catch (Exception) { throw; }
+        }
     }
 }
